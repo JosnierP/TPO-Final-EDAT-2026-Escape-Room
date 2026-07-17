@@ -1,22 +1,22 @@
 package Clases;
 
 public class Puerta {
-    private int numberDoor;
+    private int point;
     private int entranceDoor;
     private int exitDoor;
 
-    public Puerta(int numberDoor, int entranceDoor, int exitDoor) {
-        this.numberDoor = numberDoor;
+    public Puerta(int point, int entranceDoor, int exitDoor) {
+        this.point = point;
         this.entranceDoor = entranceDoor;
         this.exitDoor = exitDoor;
     }
 
-    public int getNumberDoor() {
-        return numberDoor;
+    public int getPoint() {
+        return point;
     }
 
-    public void setNumberDoor(int numberDoor) {
-        this.numberDoor = numberDoor;
+    public void setPoint(int point) {
+        this.point = point;
     }
 
     public int getEntranceDoor() {

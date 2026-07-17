@@ -1,6 +1,8 @@
 package Clases;
 
-public class Habitacion {
+import java.io.Serializable;
+
+public class Habitacion implements Serializable, Comparable<Habitacion> {
     private int code;
     private String name;
     private int floor;
@@ -49,5 +51,10 @@ public class Habitacion {
 
     public void setExit(boolean exit) {
         this.exit = exit;
+    }
+
+    @Override
+    public int compareTo(Habitacion o) {
+        return 0;
     }
 }

@@ -1,6 +1,6 @@
 package Clases;
 
-public class Desafio {
+public class Desafio implements Comparable<Desafio>{
     private int scoreAwarded;
     private String name;
     private String type;
@@ -33,5 +33,10 @@ public class Desafio {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public int compareTo(Desafio o) {
+        return 0;
     }
 }
