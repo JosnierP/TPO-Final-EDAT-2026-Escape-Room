@@ -1,11 +1,11 @@
 package Estructuras.Grafos;
 
-public class NodoVertEtiquetado {
+public class NodoVert {
     private Object elem;
-    private NodoVertEtiquetado sigVertice;
+    private NodoVert sigVertice;
     private NodoAdyEtiquetado primerAdy;
 
-    public NodoVertEtiquetado(Object elem, NodoVertEtiquetado sigVertice) {
+    public NodoVert(Object elem, NodoVert sigVertice) {
         this.elem = elem;
         this.sigVertice = sigVertice;
         this.primerAdy = null;
@@ -19,11 +19,11 @@ public class NodoVertEtiquetado {
         this.elem = elem;
     }
 
-    public NodoVertEtiquetado getSigVertice() {
+    public NodoVert getSigVertice() {
         return sigVertice;
     }
 
-    public void setSigVertice(NodoVertEtiquetado sigVertice) {
+    public void setSigVertice(NodoVert sigVertice) {
         this.sigVertice = sigVertice;
     }
 

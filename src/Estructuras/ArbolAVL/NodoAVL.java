@@ -1,25 +1,38 @@
 package Estructuras.ArbolAVL;
 
 public class NodoAVL {
-
-    private Comparable elem;
+    private Comparable clave;
+    private Object elem;
     private int altura;
     private NodoAVL izquierdo;
     private NodoAVL derecho;
 
-    public NodoAVL(Comparable elem){
+    public NodoAVL(Comparable clave,Object elem, NodoAVL izquierdo, NodoAVL derecho) {
+        this.clave = clave;
         this.elem = elem;
-        this.izquierdo = null;
-        this.derecho = null;
-        this.altura = -1;
+        this.izquierdo = izquierdo;
+        this.derecho = derecho;
+        this.altura = 0;
     }
 
-    public Comparable getElem() {
+    public Comparable getClave() {
+        return clave;
+    }
+
+    public void setClave(Comparable clave) {
+        this.clave = clave;
+    }
+
+    public Object getElem() {
         return elem;
     }
 
-    public void setElem(Comparable elem) {
+    public void setElem(Object elem) {
         this.elem = elem;
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
     }
 
     public int getAltura() {
@@ -37,6 +50,7 @@ public class NodoAVL {
         }
         this.altura = Math.max(HD, HI) + 1;
     }
+
 
     public NodoAVL getIzquierdo() {
         return izquierdo;

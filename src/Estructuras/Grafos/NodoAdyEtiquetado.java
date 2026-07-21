@@ -1,21 +1,21 @@
 package Estructuras.Grafos;
 
 public class NodoAdyEtiquetado {
-    private NodoVertEtiquetado vertice;
+    private NodoVert vertice;
     private NodoAdyEtiquetado sigAdyacente;
     private Object etiqueta;
 
-    public NodoAdyEtiquetado(NodoVertEtiquetado vertice, NodoAdyEtiquetado sigAdyacente, Object etiqueta) {
+    public NodoAdyEtiquetado(NodoVert vertice, NodoAdyEtiquetado sigAdyacente, Object etiqueta) {
         this.vertice = vertice;
         this.sigAdyacente = sigAdyacente;
         this.etiqueta = etiqueta;
     }
 
-    public NodoVertEtiquetado getVertice() {
+    public NodoVert getVertice() {
         return vertice;
     }
 
-    public void setVertice(NodoVertEtiquetado vertice) {
+    public void setVertice(NodoVert vertice) {
         this.vertice = vertice;
     }
 

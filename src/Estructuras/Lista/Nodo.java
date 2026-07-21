@@ -1,4 +1,4 @@
-package Clases;
+package Estructuras.Lista;
 /************* Autores ***********
 Josnier Jose Jesus Paez Ruiz, Legajo FAI-5889
 Enzo Albornoz, Legajo FAI-4547

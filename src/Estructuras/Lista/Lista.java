@@ -1,4 +1,4 @@
-package Clases;
+package Estructuras.Lista;
 
 public class Lista {
     private Nodo cabecera;

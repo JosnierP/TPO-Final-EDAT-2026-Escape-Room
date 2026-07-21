@@ -1,5 +1,7 @@
 package Estructuras.ArbolAVL;
 
+import Estructuras.Lista.Lista;
+
 public class ArbolAVL {
     private NodoAVL raiz;
 
@@ -17,14 +19,14 @@ public class ArbolAVL {
         return pertenece;
     }
 
-    private boolean perteneceAux(NodoAVL n, Comparable elem){
+    private boolean perteneceAux(NodoAVL n, Comparable clave){
         boolean pertenece = true;
         if(n != null){
-            if(n.getElem().compareTo(elem) > 0){
-                pertenece = perteneceAux(n.getDerecho(), elem);
-            }else if(n.getElem().compareTo(elem) < 0){
-                pertenece = perteneceAux(n.getIzquierdo(), elem);
-            }else if(n.getElem().compareTo(elem) == 0){
+            if(n.getClave().compareTo(clave) > 0){
+                pertenece = perteneceAux(n.getDerecho(), clave);
+            }else if(n.getClave().compareTo(clave) < 0){
+                pertenece = perteneceAux(n.getIzquierdo(), clave);
+            }else if(n.getClave().compareTo(clave) == 0){
                 pertenece = true;
             }else{
                 pertenece = false;
@@ -33,41 +35,52 @@ public class ArbolAVL {
         return pertenece;
     }
 
-    public boolean insertar(Comparable elemento) {
+    public boolean insertar(Comparable clave, Object dato) {
         boolean exito;
         if (this.raiz == null) {
-            this.raiz = new NodoAVL(elemento);
+            this.raiz = new NodoAVL(clave, dato, null, null);
             exito = true;
         } else {
-            exito = insertarAux(this.raiz, null, elemento);
+            exito = insertarAux(this.raiz,clave, dato );
+            this.raiz = balancear(this.raiz);
         }
         return exito;
     }
 
-    private boolean insertarAux(NodoAVL n, NodoAVL padre, Comparable elemento) {
+    private boolean insertarAux(NodoAVL n, Comparable clave, Object dato) {
         boolean exito;
-        if (elemento.compareTo(n.getElem()) == 0) {
-            exito = false; // elemento repetido
-        } else if (elemento.compareTo(n.getElem()) < 0) {
+        int comparacion = clave.compareTo(n.getClave());
+        if (comparacion == 0) {
+            exito = false;
+        } else if (comparacion < 0) {
             if (n.getIzquierdo() == null) {
-                n.setIzquierdo(new NodoAVL(elemento));
+                n.setIzquierdo(new NodoAVL(clave,dato,null,null));
                 exito = true;
             } else {
-                exito = insertarAux(n.getIzquierdo(), n, elemento);
+                exito = insertarAux(n.getIzquierdo(), clave, dato);
+                n.setIzquierdo(balancear(n.getIzquierdo()));
             }
-            n.recalcularAltura();
-            reemplazarSiCorresponde(n, padre);
         } else {
             if (n.getDerecho() == null) {
-                n.setDerecho(new NodoAVL(elemento));
+                n.setDerecho(new NodoAVL(clave,dato,null,null));
                 exito = true;
             } else {
-                exito = insertarAux(n.getDerecho(), n, elemento);
-            }
-            n.recalcularAltura();
-            reemplazarSiCorresponde(n, padre);
+                exito = insertarAux(n.getDerecho(), clave, dato);
+                n.setDerecho(balancear(n.getDerecho()));
+        }
+        }if(exito){
+            actualizarAltura(n);
         }
         return exito;
+    }
+
+    public boolean esVacio(){
+        return this.raiz == null;
+    }
+    private void actualizarAltura(NodoAVL nodoActual) {
+        if (nodoActual != null) {
+            nodoActual.recalcularAltura();
+        }
     }
 
     private void reemplazarSiCorresponde(NodoAVL n, NodoAVL padre) {
@@ -85,7 +98,7 @@ public class ArbolAVL {
     }
 
     private int altura(NodoAVL n) {
-        return (n == null) ? -1 : n.getAltura();
+        return (n == null) ? - 1 : n.getAltura();
     }
 
     private int balance(NodoAVL n) {
@@ -165,7 +178,7 @@ public class ArbolAVL {
         NodoAVL h = r.getDerecho();
         NodoAVL temp = h.getIzquierdo();
         h.setIzquierdo(r);
-        h.setDerecho(temp);
+        r.setDerecho(temp);
         r.recalcularAltura();
         h.recalcularAltura();
         return h;
@@ -229,4 +242,19 @@ public class ArbolAVL {
         }
         return resp1;
     }
+
+    public Lista listar(){
+        Lista lista = new Lista();
+        return listarAux(this.raiz,lista);
+    }
+
+    private Lista listarAux(NodoAVL n, Lista lista){
+        if(n != null){
+            lista.insertar(n.getElem(),lista.longitud() + 1);
+            listarAux(n.getIzquierdo(),lista);
+            listarAux(n.getDerecho(),lista);
+        }
+        return lista;
+    }
+
 }

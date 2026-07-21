@@ -6,14 +6,14 @@ public class Habitacion implements Serializable, Comparable<Habitacion> {
     private int code;
     private String name;
     private int floor;
-    private double squareMeters;
+    private double squaredMeters;
     private boolean exit;
 
     public Habitacion(int code, String name, int floor, double squareMeters, boolean exit) {
         this.code = code;
         this.name = name;
         this.floor = floor;
-        this.squareMeters = squareMeters;
+        this.squaredMeters = squareMeters;
         this.exit = exit;
     }
 
@@ -41,8 +41,8 @@ public class Habitacion implements Serializable, Comparable<Habitacion> {
         this.floor = floor;
     }
 
-    public double getSquareMeters() {
-        return squareMeters;
+    public double getSquaredMeters() {
+        return squaredMeters;
     }
 
     public boolean isExit() {
@@ -53,8 +53,24 @@ public class Habitacion implements Serializable, Comparable<Habitacion> {
         this.exit = exit;
     }
 
+    public void setSquaredMeters(double squareMeters) {
+        this.squaredMeters = squareMeters;
+    }
+
+    @Override
+    public String toString() {
+        return "Habitacion{" +
+                "code=" + code +
+                ", name='" + name + '\'' +
+                ", floor=" + floor +
+                ", squareMeters=" + squaredMeters +
+                ", exit=" + exit +
+                '}';
+    }
+
     @Override
     public int compareTo(Habitacion o) {
         return 0;
     }
+
 }

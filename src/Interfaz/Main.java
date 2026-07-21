@@ -10,6 +10,7 @@ public class Main {
         Sistema miSistema = new Sistema();
 
         Menu menu = new Menu(miSistema);
-    }
 
+        menu.iniciar();
+    }
 }
